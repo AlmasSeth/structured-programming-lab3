@@ -7,12 +7,17 @@ on:
 
 permissions:
   pull-requests: write
+  issues: write
   contents: read
 
 jobs:
   check-submission:
     name: Validate submission
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      issues: write
+      contents: read
 
     steps:
       - name: Checkout PR branch
@@ -81,7 +86,6 @@ jobs:
           done
           if [ ${#MISSING_HEADERS[@]} -gt 0 ]; then
             echo "status=warn" >> $GITHUB_OUTPUT
-            echo "::warning::Headers missing or incomplete in: ${MISSING_HEADERS[*]}"
           else
             echo "status=pass" >> $GITHUB_OUTPUT
           fi
@@ -90,12 +94,10 @@ jobs:
         id: commits
         run: |
           LATEST_MSG=$(git log --oneline -1 HEAD | sed 's/^[a-f0-9]* //')
-          echo "Latest commit: $LATEST_MSG"
           if echo "$LATEST_MSG" | grep -Eqi "feat:|fix:|lab3"; then
             echo "status=pass" >> $GITHUB_OUTPUT
           else
             echo "status=warn" >> $GITHUB_OUTPUT
-            echo "::warning::Commit message should follow: feat: lab3 complete - REGNO/YEAR"
           fi
 
       - name: Check TODO stubs have been worked on
@@ -108,10 +110,7 @@ jobs:
             [ -f "starter/$f" ] && TARGET="starter/$f"
             if [ -n "$TARGET" ]; then
               TODO_COUNT=$(grep -c "TODO:.*your code here" "$TARGET" || true)
-              if [ "$TODO_COUNT" -gt 0 ]; then
-                UNTOUCHED=$((UNTOUCHED + TODO_COUNT))
-                echo "::warning::$TARGET still has $TODO_COUNT untouched TODO stub(s)"
-              fi
+              UNTOUCHED=$((UNTOUCHED + TODO_COUNT))
             fi
           done
           if [ "$UNTOUCHED" -gt 0 ]; then
@@ -124,6 +123,7 @@ jobs:
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v7
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const f = '${{ steps.files.outputs.status }}';
             const s = '${{ steps.syntax.outputs.status }}';
@@ -156,13 +156,13 @@ jobs:
               '| TODO stubs worked on | ' + stubs + ' | 2 |',
               '| PR template filled | _(checked by lecturer)_ | 1 |',
               '',
-              '> :white_check_mark: pass  :warning: warning  :x: fail',
+              '> :white_check_mark: pass  :warning: warning (marks may be deducted)  :x: fail',
               '> Lecturer will review and confirm final marks after the deadline.',
               '',
               '_Automated check. Raise a GitHub Issue if you believe a result is incorrect._'
             ];
 
-            github.rest.issues.createComment({
+            await github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
