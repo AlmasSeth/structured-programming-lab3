@@ -1,13 +1,14 @@
 <?php
+
 /**
  * ICS 2371 — Lab 3: Control Structures I
  * Task 1: Simple if and if-else — Warm-Up Exercises [5 marks]
  *
- * @author     [Your Full Name]
- * @student    [Your Reg Number, e.g. SCT212-XXXX/2024]
+ * @author     [Seth Almas Wanyonyi]
+ * @student    [ENE212-0222/2023]
  * @lab        Lab 3 of 14
  * @unit       ICS 2371
- * @date       [Date completed]
+ * @date       [1st April 2026]
  */
 
 // ══════════════════════════════════════════════════════════════
@@ -39,7 +40,9 @@
 // Run this code EXACTLY as written.
 // Record all six outputs in your report and explain each result.
 
-$x = 10; $y = "10"; $z = 10.0;
+$x = 10;
+$y = "10";
+$z = 10.0;
 
 var_dump($x == $y);   // A: ?
 var_dump($x === $y);  // B: ?

@@ -1,13 +1,14 @@
 <?php
+
 /**
  * ICS 2371 — Lab 3: Control Structures I
  * Task 3: switch-case and match Expression [6 marks]
  *
- * @author     [Your Full Name]
- * @student    [Your Reg Number, e.g. SCT212-XXXX/2024]
+ * @author     [Seth Almas Wanyonyi]
+ * @student    [ENE212-0222/2023]
  * @lab        Lab 3 of 14
  * @unit       ICS 2371
- * @date       [Date completed]
+ * @date       [1st April 2026]
  */
 
 // ══════════════════════════════════════════════════════════════

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ICS 2371 — Lab 3: Control Structures I
  * Task 4: Nested Conditions — Loan Eligibility Checker [6 marks]
@@ -6,11 +7,11 @@
  * IMPORTANT: You must complete pseudocode AND flowchart in your PDF
  * report BEFORE writing any code below.
  *
- * @author     [Your Full Name]
- * @student    [Your Reg Number, e.g. SCT212-XXXX/2024]
+ * @author     [Seth Almas Wanyonyi]
+ * @student    [ENE212-0222/2023]
  * @lab        Lab 3 of 14
  * @unit       ICS 2371
- * @date       [Date completed]
+ * @date       [1st April 2026]
  */
 
 // ── Problem: Student Loan Eligibility System ───────────────────────────────

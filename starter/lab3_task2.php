@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ICS 2371 — Lab 3: Control Structures I
  * Task 2: JKUAT Grade Classification System [8 marks]
@@ -7,11 +8,11 @@
  * report BEFORE writing any code below. Marks are awarded for all
  * three components: pseudocode, flowchart, and working code.
  *
- * @author     [Your Full Name]
- * @student    [Your Reg Number, e.g. SCT212-XXXX/2024]
+ * @author     [Seth Almas Wanyonyi]
+ * @student    [ENE212-0222/2023]
  * @lab        Lab 3 of 14
  * @unit       ICS 2371
- * @date       [Date completed]
+ * @date       [1st April 2026]
  */
 
 // ── Test Data Set A (change values to run other test sets) ─────────────────
